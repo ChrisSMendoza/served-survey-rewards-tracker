@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Served</string>
     <string name="button_to_survey">Take Survey</string>
+    <string name="take_survey_label">Take Survey</string>
 </resources>
