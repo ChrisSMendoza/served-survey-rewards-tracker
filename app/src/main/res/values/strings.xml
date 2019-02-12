@@ -2,4 +2,7 @@
     <string name="app_name">Served</string>
     <string name="button_to_survey">Take Survey</string>
     <string name="take_survey_label">Take Survey</string>
+    <string name="button_detect_restaurant">Detect Restaurant</string>
+    <string name="button_select_restaurant">Select Restaurant</string>
+    <string name="take_survey_message">Ready to take a survey and earn some food or drinks? If you\'re in the restaurant right now, hit \'detect restaurant\' and if we recognize your location we\'ll send you to the survey. Or select a restaurant from our available list.</string>
 </resources>

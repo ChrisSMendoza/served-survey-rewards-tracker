@@ -1,5 +1,6 @@
 package com.chris.codes.served;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,5 +18,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToTakeSurvey(View view) {
         Log.d(LOG_TAG, "goToTakeSurvey button clicked");
+
+        Intent goTakeSurveyIntent = new Intent(this, TakeSurveyActivity.class);
+        startActivity(goTakeSurveyIntent);
     }
 }
