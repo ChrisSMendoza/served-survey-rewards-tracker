@@ -11,7 +11,7 @@ public class Reward {
 
     @PrimaryKey // every entity needs one
     @NonNull
-    @ColumnInfo(name = "redeem code") // column should be labeled with this instead of 'mRedeemCode'
+    @ColumnInfo(name = "redeemCode") // column should be labeled with this instead of 'mRedeemCode'
     private String mRedeemCode;
 
     // keywords starting with @ are annotations
