@@ -1,5 +1,6 @@
 package com.chris.codes.served;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
@@ -18,5 +19,5 @@ public interface RewardDao {
 
     // NOTE: ascending order isn't needed here, but makes testing easier
     @Query("SELECT * FROM reward_table ORDER BY redeemCode ASC")
-    List<Reward> getAllRewards();
+    LiveData<List<Reward>> getAllRewards(); // live data syncs database changes to used data
 }
