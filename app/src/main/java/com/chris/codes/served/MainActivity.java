@@ -10,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -49,5 +50,26 @@ public class MainActivity extends AppCompatActivity {
 
         Intent goTakeSurveyIntent = new Intent(this, TakeSurveyActivity.class);
         startActivity(goTakeSurveyIntent);
+    }
+
+    public static final int NEW_REWARD_ACTIVITY_REQUEST_CODE = 1;
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == NEW_REWARD_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+            Reward word = new Reward(data.getStringExtra(NewRewardActivity.EXTRA_REPLY));
+            mRewardViewModel.insert(word);
+        } else {
+            Toast.makeText(
+                    getApplicationContext(),
+                    R.string.empty_not_saved,
+                    Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void addNewReward(View view) {
+        Intent intent = new Intent(MainActivity.this, NewRewardActivity.class);
+        startActivityForResult(intent, NEW_REWARD_ACTIVITY_REQUEST_CODE);
     }
 }

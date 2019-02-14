@@ -58,8 +58,9 @@ public abstract class RewardRoomDatabase extends RoomDatabase {
                     // create database in the app context
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             RewardRoomDatabase.class, "reward_database")
-                            .addCallback(sRewardDatabaseCallback)
-                            .build();
+                            .addCallback(sRewardDatabaseCallback) // uncomment to delete any user
+                            .build();                               // entries and add base entries
+
                 }
             }
         }
