@@ -16,11 +16,11 @@ public class Reward {
 
     // keywords starting with @ are annotations
     // they make this class meaningful to a Room DB
-    public Reward(@NonNull String code) {
-        this.mRedeemCode = code;
+    public Reward(@NonNull String redeemCode) {
+        this.mRedeemCode = redeemCode;
     }
 
-    public String getReward() {
+    public String getRedeemCode() {
         return this.mRedeemCode;
     }
 }
