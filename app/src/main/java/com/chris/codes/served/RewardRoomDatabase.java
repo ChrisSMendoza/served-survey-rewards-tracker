@@ -4,12 +4,14 @@ import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
+import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
 // database only holds rewards
 @Database(entities = {Reward.class}, version = 1)
+@TypeConverters({Converters.class}) // date converters
 public abstract class RewardRoomDatabase extends RoomDatabase {
 
     public abstract RewardDao rewardDao();
@@ -58,7 +60,7 @@ public abstract class RewardRoomDatabase extends RoomDatabase {
                     // create database in the app context
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             RewardRoomDatabase.class, "reward_database")
-                            .addCallback(sRewardDatabaseCallback) // uncomment to delete any user
+                            .addCallback(sRewardDatabaseCallback)   // uncomment to delete any user
                             .build();                               // entries and add base entries
 
                 }
