@@ -13,12 +13,14 @@ import java.util.Date;
 @Entity(tableName = "reward_table")
 public class Reward {
 
-    @PrimaryKey // every entity needs one
+    private Date expirationDate; // created based on date of completion
+
     @NonNull
-    @ColumnInfo(name = "redeemCode") // column should be labeled with this instead of 'mRedeemCode'
-    private String mRedeemCode;
-    private String mCompanyId;
-    private Date mExpiresOnDate; // created based on date of completion
+    private String redeemCode;
+
+    @NonNull
+    @PrimaryKey
+    private String companyId;
 
     public Reward(@NonNull String companyId, @NonNull String redeemCode) {
 
@@ -26,35 +28,32 @@ public class Reward {
         // hard coded now, will come from other table
         int numDaysToRedeem = 30;
         Date today = new Date();
-        mExpiresOnDate = DateUtil.addDays(today, numDaysToRedeem); // the last day to redeem reward
+        expirationDate = DateUtil.addDays(today, numDaysToRedeem); // the last day to redeem reward
 
-        this.mRedeemCode = redeemCode;
-        this.mCompanyId = companyId;
+        this.redeemCode = redeemCode;
+        this.companyId = companyId;
+    }
+
+    public Date getExpirationDate() {
+        return expirationDate;
+    }
+    public void setExpirationDate(Date expirationDate) {
+        this.expirationDate = expirationDate;
     }
 
     @NonNull
     String getRedeemCode() {
-        return mRedeemCode;
+        return redeemCode;
     }
-
     public void setRedeemCode(@NonNull String redeemCode) {
-        this.mRedeemCode = redeemCode;
-    }
-
-    Date getExpiresOnDate() {
-        return mExpiresOnDate;
-    }
-
-    void setExpiresOnDate(Date expiresOnDate) {
-        this.mExpiresOnDate = expiresOnDate;
+        this.redeemCode = redeemCode;
     }
 
     String getCompanyId() {
-        return mCompanyId;
+        return companyId;
     }
-
     void setCompanyId(String companyId) {
-        this.mCompanyId = companyId;
+        this.companyId = companyId;
     }
 }
 /*
