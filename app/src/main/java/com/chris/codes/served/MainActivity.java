@@ -1,6 +1,7 @@
 package com.chris.codes.served;
 
 import android.content.Intent;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,5 +22,17 @@ public class MainActivity extends AppCompatActivity {
 
         Intent goTakeSurveyIntent = new Intent(this, TakeSurveyActivity.class);
         startActivity(goTakeSurveyIntent);
+    }
+
+    private static final int REQUEST_IMAGE_CAPTURE = 1;
+
+    public void dispatchTakePictureIntent(View view) {
+
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+        if(takePictureIntent.resolveActivity(getPackageManager()) != null) {
+
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
     }
 }

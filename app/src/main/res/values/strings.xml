@@ -5,4 +5,8 @@
     <string name="button_detect_restaurant">Detect Restaurant</string>
     <string name="button_select_restaurant">Select Restaurant</string>
     <string name="take_survey_message">Ready to take a survey and earn some food or drinks? If you\'re in the restaurant right now, hit \'detect restaurant\' and if we recognize your location we\'ll send you to the survey. Or select a restaurant from our available list.</string>
+
+    <!--camera related-->
+    <string name="take_picture">Take picture</string>
+    <string name="btn_take_photo_label">Take Photo</string>
 </resources>
