@@ -17,12 +17,19 @@ public class Reward {
     @NonNull
     @ColumnInfo(name = "redeemCode") // column should be labeled with this instead of 'mRedeemCode'
     private String mRedeemCode;
+    private String mCompanyId;
     private Date mExpiresOnDate; // created based on date of completion
-    private int mCompanyId;
 
+    public Reward(@NonNull String companyId, @NonNull String redeemCode) {
 
-    public Reward(@NonNull String redeemCode) {
+        // the number of days the user has to redeem
+        // hard coded now, will come from other table
+        int numDaysToRedeem = 30;
+        Date today = new Date();
+        mExpiresOnDate = DateUtil.addDays(today, numDaysToRedeem); // the last day to redeem reward
+
         this.mRedeemCode = redeemCode;
+        this.mCompanyId = companyId;
     }
 
     @NonNull
@@ -42,11 +49,11 @@ public class Reward {
         this.mExpiresOnDate = expiresOnDate;
     }
 
-    int getCompanyId() {
+    String getCompanyId() {
         return mCompanyId;
     }
 
-    void setCompanyId(int companyId) {
+    void setCompanyId(String companyId) {
         this.mCompanyId = companyId;
     }
 }

@@ -58,8 +58,8 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == NEW_REWARD_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            Reward word = new Reward(data.getStringExtra(NewRewardActivity.EXTRA_REPLY));
-            mRewardViewModel.insert(word);
+            Reward reward = new Reward(data.getStringExtra(NewRewardActivity.EXTRA_REPLY), "fake-code");
+            mRewardViewModel.insert(reward);
         } else {
             Toast.makeText(
                     getApplicationContext(),
