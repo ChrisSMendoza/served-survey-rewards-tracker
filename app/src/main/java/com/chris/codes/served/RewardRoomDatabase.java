@@ -10,30 +10,44 @@ import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
 // database only holds rewards
-@Database(entities = {Reward.class}, version = 1)
+@Database(entities = {Reward.class, RewardInfo.class}, version = 1)
 @TypeConverters({Converters.class}) // date converters
 public abstract class RewardRoomDatabase extends RoomDatabase {
 
     public abstract RewardDao rewardDao();
+    public abstract RewardInfoDao rewardInfoDao();
 
     // singleton pattern to prevent multiple instances of the database
     private static volatile RewardRoomDatabase INSTANCE;
 
     private static class PopulateDBAsync extends AsyncTask<Void, Void, Void> {
 
-        private final RewardDao mDao;
+        private final RewardDao rewardDao;
+        private final RewardInfoDao rewardInfoDao;
 
         PopulateDBAsync(RewardRoomDatabase db) {
-            mDao = db.rewardDao();
+            rewardDao = db.rewardDao();
+            rewardInfoDao = db.rewardInfoDao();
         }
         @Override
         protected Void doInBackground(final Void... params) {
-            mDao.deleteAll();
+            rewardDao.deleteAll();
 
             Reward reward = new Reward("mcdonalds", "mcdonalds-code");
-            mDao.insert(reward);
+            rewardDao.insert(reward);
             reward = new Reward("popeyes", "popeyes-code");
-            mDao.insert(reward);
+            rewardDao.insert(reward);
+
+
+            String exId = "popeyes"; // example data values
+            String exName = "Popeyes";
+            String exCond = "Comes with the purchase of a large drink";
+            String exInstr = "Write code on receipt, and take a picture of the front and back";
+            int exNumDays = 365;
+
+            rewardInfoDao.deleteAll();
+            RewardInfo rewardInfo = new RewardInfo(exId, exName, exCond, exInstr, exNumDays);
+            rewardInfoDao.insert(rewardInfo);
 
             return null;
         }

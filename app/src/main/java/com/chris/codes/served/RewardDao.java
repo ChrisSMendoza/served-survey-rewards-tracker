@@ -18,6 +18,11 @@ public interface RewardDao {
     void deleteAll();
 
     // NOTE: ascending order isn't needed here, but makes testing easier
-    @Query("SELECT * FROM reward_table ORDER BY redeemCode ASC")
+    /*
+        grab all columns of a reward joined with its info
+    */
+    @Query("SELECT * FROM reward_table " +
+            "INNER JOIN reward_info_table ON reward_table.companyId=reward_info_table.id " +
+            "ORDER BY redeemCode ASC")
     LiveData<List<Reward>> getAllRewards(); // live data syncs database changes to used data
 }
