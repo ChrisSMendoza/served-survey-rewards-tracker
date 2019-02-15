@@ -45,7 +45,8 @@
         android:src="@drawable/ic_add_black_24dp"
         app:layout_constraintBottom_toTopOf="@+id/button_to_survey"
         app:layout_constraintEnd_toEndOf="parent"
-        android:focusable="true" />
+        android:focusable="true"
+        android:onClick="addNewReward" />
 
 
 </android.support.constraint.ConstraintLayout>
