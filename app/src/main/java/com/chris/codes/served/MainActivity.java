@@ -65,9 +65,8 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(LOG_TAG, "error occurred while creating image file");
             }
 
-            // file was created successfully
-            if(photoFile != null) {
-
+            if(photoFile != null) // file was created successfully
+            {
                 Uri photoURI = FileProvider.getUriForFile(
                     this,
                     "com.chris.codes.served.android.fileprovider",
@@ -75,8 +74,6 @@ public class MainActivity extends AppCompatActivity {
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
             }
-
-            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
         }
     }
 }
