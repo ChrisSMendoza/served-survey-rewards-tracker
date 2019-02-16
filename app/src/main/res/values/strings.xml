@@ -9,4 +9,6 @@
     <!--camera related-->
     <string name="take_picture">Take picture</string>
     <string name="btn_take_photo_label">Take Photo</string>
+    <string name="btn_get_photo_label">Get Photo</string>
+    <string name="btn_display_photo_label">Display Photo</string>
 </resources>
