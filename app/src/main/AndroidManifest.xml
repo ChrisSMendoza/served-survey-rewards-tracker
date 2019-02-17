@@ -5,8 +5,12 @@
 
     <uses-feature
         android:name="android.hardware.camera"
-        android:required="false" /> <!-- to store in public camera roll -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        android:required="false" />
+
+    <!-- we use a private app folder, so only need permission if Android 4.3 or lower -->
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
 
     <application
         android:allowBackup="true"
