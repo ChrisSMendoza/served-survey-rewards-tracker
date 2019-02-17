@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import java.io.File;
@@ -27,11 +28,27 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageView imageView = null;
 
+
+    // requesting access to all photos and files
+    private void requestPermissionsIfNeeded() {
+
+        int permissions =
+                ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+        // we aren't allowed to access photos
+        if(permissions != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    MY_PERMISSIONS_REQUEST);
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        requestPermissionsIfNeeded(); // request permissions when app launches
         imageView = findViewById(R.id.image_view);
     }
 
@@ -49,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
     private File createImageFile() throws IOException {
 
-        // create an image file name based on today's date
+        // create a file name based on today's date
         String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "JPEG_" + timestamp + "_";
 
@@ -93,39 +110,26 @@ public class MainActivity extends AppCompatActivity {
 
     public void displayPhoto(View view) {
 
-        requestPermissionsIfNeeded();
-
         String photoName = "20190215_181244.jpg";
         String photoPath = galleryPath + photoName;
-        Bitmap imageBitmap = null;
+        Bitmap originalBitmap = null;
+        Bitmap rotatedBitmap = null; // image with adjusted orientation
         File image = new File(photoPath); // to check it exists
 
         if(image.exists()) {
             try {
-                imageBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), Uri.fromFile(image));
+                originalBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), Uri.fromFile(image));
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            imageView.setImageBitmap(imageBitmap); // display the photo
+            imageView.setImageBitmap(originalBitmap); // display the photo
         }
         else {
             Log.d(LOG_TAG, "the image file was not found..");
         }
     }
 
-    private void requestPermissionsIfNeeded() {
 
-        int permissions =
-                ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-
-        // we aren't allowed to access photos
-        if(permissions != PackageManager.PERMISSION_GRANTED) {
-
-            ActivityCompat.requestPermissions(this,
-                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                            MY_PERMISSIONS_REQUEST);
-        }
-    }
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] results) {
 
@@ -143,5 +147,4 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
 }
