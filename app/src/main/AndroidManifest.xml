@@ -16,10 +16,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+
         <activity
             android:name=".RewardDetailActivity"
             android:label="@string/title_activity_reward_detail"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".TakeSurveyActivity"
             android:label="@string/take_survey_label"
@@ -28,6 +30,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.chris.codes.served.TakeSurveyActivity" />
         </activity>
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

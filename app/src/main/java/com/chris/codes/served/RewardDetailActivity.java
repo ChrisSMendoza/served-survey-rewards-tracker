@@ -27,18 +27,16 @@ public class RewardDetailActivity extends AppCompatActivity {
         Intent intent = this.getIntent();
         Bundle rewardBundle = intent.getExtras();
 
-        DevReward reward = (DevReward) rewardBundle.getSerializable(MainActivity.REWARD_BUNDLE);
+        if(rewardBundle != null) {
 
-        if(reward == null)
-            Log.d("onCreate", "reward was not instantiated properly");
-        else {
+            DevReward reward = (DevReward) rewardBundle.getSerializable(MainActivity.REWARD_BUNDLE);
+
             itemNameText.setText(reward.itemName);
 
             Picasso.get().load(new File(reward.imageName)).into(receiptImageView);
 
             Log.d("onCreate", "textView and imageView were set");
         }
-
     }
 
 
