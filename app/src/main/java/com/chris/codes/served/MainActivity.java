@@ -17,6 +17,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.squareup.picasso.Picasso;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -59,23 +61,17 @@ public class MainActivity extends AppCompatActivity {
         startActivity(goTakeSurveyIntent);
     }
 
-
-
     private static final int REQUEST_IMAGE_CAPTURE = 1;
-    String currentPhotoPath;
 
     private File createImageFile() throws IOException {
 
         // create a file name based on today's date
-        String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "JPEG_" + timestamp + "_";
+        String imageFileName = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
 
-        // store image file in public directory
-        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File image = File.createTempFile(imageFileName, ".jpg", storageDir);
+        // store image file in app's directory
+        File appDirectory = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
 
-        currentPhotoPath = image.getAbsolutePath(); // path for use in ACTION_VIEW intent
-        return image;
+        return File.createTempFile(imageFileName, ".jpg", appDirectory);
     }
 
     public void dispatchTakePictureIntent(View view) {
@@ -105,28 +101,22 @@ public class MainActivity extends AppCompatActivity {
     }
     private static final int REQUEST_GET_PHOTO = 2;
     private final int MY_PERMISSIONS_REQUEST = 3;
-    private final String galleryPath = "/storage/emulated/0/DCIM/Camera/";
-
 
     public void displayPhoto(View view) {
 
-        String photoName = "20190215_181244.jpg";
-        String photoPath = galleryPath + photoName;
-        Bitmap originalBitmap = null;
-        Bitmap rotatedBitmap = null; // image with adjusted orientation
+        File appDirectory = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+
+        String photoName = "20190216_2105491221145406.jpg";
+        String photoPath = appDirectory.toString() + File.separator + photoName;
+
         File image = new File(photoPath); // to check it exists
 
         if(image.exists()) {
-            try {
-                originalBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), Uri.fromFile(image));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            imageView.setImageBitmap(originalBitmap); // display the photo
-        }
-        else {
-            Log.d(LOG_TAG, "the image file was not found..");
-        }
+            Picasso.get().load(image).into(imageView);
+            Log.d("displayPhoto", "Picasso loaded image");
+        }else
+            Log.d(LOG_TAG, "image didn't exist...");
+
     }
 
 
