@@ -29,15 +29,17 @@ public class RewardDetailActivity extends AppCompatActivity {
 
         if(rewardBundle != null) {
 
-            DevReward reward = (DevReward) rewardBundle.getSerializable(MainActivity.REWARD_BUNDLE);
+            DevReward reward = (DevReward) rewardBundle.getSerializable(RewardsAvailableActivity.REWARD_BUNDLE);
+            File image = new File(reward.imageName);
 
             itemNameText.setText(reward.itemName);
 
-            Picasso.get().load(new File(reward.imageName)).into(receiptImageView);
-
-            Log.d("onCreate", "textView and imageView were set");
+            if(image.exists()) {
+                Picasso.get().load(image).into(receiptImageView);
+                Log.d("onCreate", "itemNameText and imageView set");
+            }
+            else
+                Log.d("onCreate", "the image did not exist..");
         }
     }
-
-
 }
