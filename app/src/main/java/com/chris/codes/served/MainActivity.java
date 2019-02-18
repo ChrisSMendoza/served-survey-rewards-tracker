@@ -50,5 +50,4 @@ public class MainActivity extends AppCompatActivity {
         Intent goTakeSurveyIntent = new Intent(this, TakeSurveyActivity.class);
         startActivity(goTakeSurveyIntent);
     }
-
 }
