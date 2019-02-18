@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".NewRewardActivity"></activity>
+        <activity android:name=".RewardsAvailableActivity"></activity>
         <activity
             android:name=".TakeSurveyActivity"
             android:label="@string/take_survey_label"
