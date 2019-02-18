@@ -22,7 +22,10 @@ public class Reward {
     @PrimaryKey
     private String companyId;
 
-    public Reward(@NonNull String companyId, @NonNull String redeemCode) {
+    @NonNull private String itemName;
+
+
+    public Reward(@NonNull String companyId, @NonNull String redeemCode, @NonNull String itemName) {
 
         // the number of days the user has to redeem
         // hard coded now, will come from other table
@@ -33,6 +36,7 @@ public class Reward {
 
         this.redeemCode = redeemCode;
         this.companyId = companyId;
+        this.itemName = itemName;
     }
 
     public Date getExpirationDate() {
@@ -55,6 +59,15 @@ public class Reward {
     }
     void setCompanyId(String companyId) {
         this.companyId = companyId;
+    }
+
+    @NonNull
+    public String getItemName() {
+        return itemName;
+    }
+
+    public void setItemName(@NonNull String itemName) {
+        this.itemName = itemName;
     }
 }
 

@@ -5,11 +5,8 @@ import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
-@Entity(foreignKeys = @ForeignKey(
-    entity = Reward.class,
-    parentColumns = "companyId",
-    childColumns = "id"),
-    tableName = "reward_info_table")
+
+@Entity(tableName = "reward_info_table")
 public class RewardInfo {
 
     @NonNull

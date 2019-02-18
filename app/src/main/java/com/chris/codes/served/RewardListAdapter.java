@@ -13,11 +13,14 @@ public class RewardListAdapter extends RecyclerView.Adapter<RewardListAdapter.Re
 
     class RewardViewHolder extends RecyclerView.ViewHolder {
 
-        private final TextView rewardItemView;
+        private final TextView itemNameText;
+        private final TextView conditionText;
 
         private RewardViewHolder(View itemView) {
-            super(itemView); // what text view is this grabbing?
-            rewardItemView = itemView.findViewById(R.id.textView);
+            super(itemView);
+
+            itemNameText = itemView.findViewById(R.id.item_name_text);
+            conditionText = itemView.findViewById(R.id.reward_condition_text);
         }
     }
 
@@ -40,11 +43,13 @@ public class RewardListAdapter extends RecyclerView.Adapter<RewardListAdapter.Re
         if(mRewards != null) {
 
             Reward currentReward = mRewards.get(position);
-            holder.rewardItemView.setText(currentReward.getRedeemCode());
+            holder.itemNameText.setText(currentReward.getItemName());
+            // DEV: USING COMPANY ID INSTEAD OF CONDITION SINCE CONDITION WILL COME FROM JOINING TABLES
+            holder.conditionText.setText(currentReward.getCompanyId());
         }
         // data isn't ready yet
         else {
-            holder.rewardItemView.setText("No rewards yet");
+            holder.itemNameText.setText("No rewards yet");
         }
     }
 

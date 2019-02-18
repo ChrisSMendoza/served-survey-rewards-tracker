@@ -33,9 +33,11 @@ public abstract class RewardRoomDatabase extends RoomDatabase {
         protected Void doInBackground(final Void... params) {
             rewardDao.deleteAll();
 
-            Reward reward = new Reward("mcdonalds", "mcdonalds-code");
+            Reward reward = new Reward("mcdonalds", "mcdonalds-code", "Quarter Pounder");
             rewardDao.insert(reward);
-            reward = new Reward("popeyes", "popeyes-code");
+            reward = new Reward("popeyes", "popeyes-code", "2 Piece Chicken");
+            rewardDao.insert(reward);
+            reward = new Reward("subway", "subway-code", "2 Cookies");
             rewardDao.insert(reward);
 
 
