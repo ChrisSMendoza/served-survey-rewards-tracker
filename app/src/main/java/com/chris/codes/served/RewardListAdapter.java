@@ -18,9 +18,9 @@ public class RewardListAdapter extends RecyclerView.Adapter<RewardListAdapter.Re
 
     class RewardViewHolder extends RecyclerView.ViewHolder {
 
+        private final LinearLayout linearLayout; // holds list item's subviews
         private final TextView itemNameText;
         private final TextView conditionText;
-        private final LinearLayout linearLayout;
 
         private RewardViewHolder(View itemView) {
             super(itemView);

@@ -65,4 +65,12 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+    public void goToRewardsAvailable(View view) {
+
+        Intent rewardsAvailableIntent =
+                new Intent(this, RewardsAvailableActivity.class);
+
+        startActivity(rewardsAvailableIntent);
+    }
 }
