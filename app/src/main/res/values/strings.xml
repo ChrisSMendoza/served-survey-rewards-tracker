@@ -6,6 +6,12 @@
     <string name="button_select_restaurant">Select Restaurant</string>
     <string name="take_survey_message">Ready to take a survey and earn some food or drinks? If you\'re in the restaurant right now, hit \'detect restaurant\' and if we recognize your location we\'ll send you to the survey. Or select a restaurant from our available list.</string>
 
+    <string name="hint_reward">Reward Code</string>
+    <string name="button_save">Save</string>
+    <string name="empty_not_saved">Word not saved because it is empty</string>
+    <string name="item_name_text">Item Name</string>
+    <string name="reward_condition_text">condition</string>
+
     <!--camera related-->
     <string name="take_picture">Take picture</string>
     <string name="btn_take_photo_label">Take Photo</string>
@@ -13,5 +19,4 @@
     <string name="btn_display_photo_label">Display Photo</string>
     <string name="title_activity_reward_detail">RewardDetailActivity</string>
     <string name="view_details_btn_label">DEV: view reward details</string>
-
 </resources>
