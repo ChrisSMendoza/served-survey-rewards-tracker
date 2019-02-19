@@ -34,7 +34,8 @@ public class Reward {
     }
 
     public Date getExpirationDate() {
-        return expirationDate;
+
+        return DateUtil.addDays(purchaseDate, numDaysToRedeem);
     }
     public void setExpirationDate(Date expirationDate) {
         this.expirationDate = expirationDate;

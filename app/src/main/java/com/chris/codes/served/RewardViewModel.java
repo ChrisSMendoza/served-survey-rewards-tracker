@@ -30,7 +30,6 @@ public class RewardViewModel extends AndroidViewModel {
     }
 
     // getAllRewards(), insert() hide implementation from UI
-
     LiveData<List<Reward>> getAllRewards() { return mAllRewards; }
 
     public void insert(Reward reward) { mRewardRepository.insert(reward); }

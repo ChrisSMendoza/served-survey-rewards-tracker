@@ -35,8 +35,8 @@ public abstract class RewardRoomDatabase extends RoomDatabase {
         protected Void doInBackground(final Void... params) {
             int popeyesId = 1;
 
-            rewardDao.deleteAll();
-            Reward reward = new Reward(popeyesId, "NLURVA83SBR", new Date()); // DEV: using today, should be purchase date
+            rewardDao.deleteAll();              // DEV: using today, should be purchase date
+            Reward reward = new Reward(popeyesId, "NLURVA83SBR", new Date());
             rewardDao.insert(reward);
 
 

@@ -20,4 +20,5 @@
     <string name="title_activity_reward_detail">RewardDetailActivity</string>
     <string name="view_details_btn_label">DEV: view reward details</string>
     <string name="rewards_available_btn_label">My Rewards</string>
+    <string name="exp_date_text">Expiration Date</string>
 </resources>

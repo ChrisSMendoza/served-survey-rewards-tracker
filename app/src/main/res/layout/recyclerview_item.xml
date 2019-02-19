@@ -26,4 +26,10 @@
         android:clickable="false"
         android:text="@string/reward_condition_text" />
 
+    <TextView
+        android:id="@+id/exp_date_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/exp_date_text" />
+
 </LinearLayout>

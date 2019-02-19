@@ -21,13 +21,15 @@ public class RewardListAdapter extends RecyclerView.Adapter<RewardListAdapter.Re
         private final LinearLayout linearLayout; // holds list item's subviews
         private final TextView itemNameText;
         private final TextView conditionText;
+        private final TextView expDateText;
 
         private RewardViewHolder(View itemView) {
             super(itemView);
 
+            linearLayout = itemView.findViewById(R.id.reward_linear_layout);
             itemNameText = itemView.findViewById(R.id.item_name_text);
             conditionText = itemView.findViewById(R.id.reward_condition_text);
-            linearLayout = itemView.findViewById(R.id.reward_linear_layout);
+            expDateText = itemView.findViewById(R.id.exp_date_text);
         }
     }
 
@@ -56,6 +58,7 @@ public class RewardListAdapter extends RecyclerView.Adapter<RewardListAdapter.Re
 
             holder.itemNameText.setText(currentReward.getItemName());
             holder.conditionText.setText(currentReward.getCondition());
+            holder.expDateText.setText(currentReward.getExpirationDate().toString());
 
             holder.linearLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
