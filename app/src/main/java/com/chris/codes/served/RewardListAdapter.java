@@ -53,9 +53,9 @@ public class RewardListAdapter extends RecyclerView.Adapter<RewardListAdapter.Re
         if(mRewards != null) {
 
             final Reward currentReward = mRewards.get(position);
+
             holder.itemNameText.setText(currentReward.getItemName());
-            // DEV: USING COMPANY ID INSTEAD OF CONDITION SINCE CONDITION WILL COME FROM JOINING TABLES
-            holder.conditionText.setText(currentReward.getCompanyId());
+            holder.conditionText.setText(currentReward.getCondition());
 
             holder.linearLayout.setOnClickListener(new View.OnClickListener() {
                 @Override

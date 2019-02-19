@@ -9,6 +9,8 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
+import java.util.Date;
+
 // database only holds rewards
 @Database(entities = {Reward.class, RewardInfo.class}, version = 1)
 @TypeConverters({Converters.class}) // date converters
@@ -31,24 +33,21 @@ public abstract class RewardRoomDatabase extends RoomDatabase {
         }
         @Override
         protected Void doInBackground(final Void... params) {
+            int popeyesId = 1;
+
             rewardDao.deleteAll();
-
-            Reward reward = new Reward("mcdonalds", "mcdonalds-code", "Quarter Pounder");
-            rewardDao.insert(reward);
-            reward = new Reward("popeyes", "popeyes-code", "2 Piece Chicken");
-            rewardDao.insert(reward);
-            reward = new Reward("subway", "subway-code", "2 Cookies");
+            Reward reward = new Reward(popeyesId, "NLURVA83SBR", new Date()); // DEV: using today, should be purchase date
             rewardDao.insert(reward);
 
 
-            String exId = "popeyes"; // example data values
             String exName = "Popeyes";
             String exCond = "Comes with the purchase of a large drink";
             String exInstr = "Write code on receipt, and take a picture of the front and back";
+            String exItemName = "2 Piece Chicken";
             int exNumDays = 365;
 
             rewardInfoDao.deleteAll();
-            RewardInfo rewardInfo = new RewardInfo(exId, exName, exCond, exInstr, exNumDays);
+            RewardInfo rewardInfo = new RewardInfo(popeyesId, exName, exCond, exInstr, exItemName, exNumDays);
             rewardInfoDao.insert(rewardInfo);
 
             return null;

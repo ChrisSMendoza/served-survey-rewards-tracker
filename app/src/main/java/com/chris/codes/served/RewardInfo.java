@@ -11,27 +11,27 @@ public class RewardInfo {
 
     @NonNull
     @PrimaryKey
-    private String id;
+    private int id;
     private String name;
+    private String itemName;
     private String condition;
     private String instructions;
     private int numDaysToRedeem;
 
-    public RewardInfo(String id, String name, String condition, String instructions, int numDaysToRedeem) {
+    public RewardInfo(int id, String name, String condition, String instructions, String itemName, int numDaysToRedeem) {
 
         this.id = id;
         this.name = name;
+        this.itemName = itemName;
         this.condition = condition;
         this.instructions = instructions;
         this.numDaysToRedeem = numDaysToRedeem;
     }
 
     @NonNull
-    public String getId() {
-        return id;
-    }
+    public int getId() { return id; }
 
-    public void setId(@NonNull String id) {
+    public void setId(@NonNull int id) {
         this.id = id;
     }
 
@@ -66,4 +66,8 @@ public class RewardInfo {
     public void setNumDaysToRedeem(int numDaysToRedeem) {
         this.numDaysToRedeem = numDaysToRedeem;
     }
+
+    public String getItemName() { return itemName; }
+
+    public void setItemName(String itemName) { this.itemName = itemName; }
 }

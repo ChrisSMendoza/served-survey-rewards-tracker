@@ -19,7 +19,7 @@ public interface RewardInfoDao {
     void delete(RewardInfo... rewardInfos);
 
     @Query("SELECT * FROM reward_info_table WHERE id=:companyId")
-    RewardInfo findRewardInfoForReward(String companyId);
+    RewardInfo findRewardInfo(int companyId);
 
     @Query("DELETE FROM reward_info_table")
     void deleteAll();

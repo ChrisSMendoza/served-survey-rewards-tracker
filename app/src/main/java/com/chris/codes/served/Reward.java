@@ -1,6 +1,5 @@
 package com.chris.codes.served;
 
-import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
@@ -13,30 +12,25 @@ import java.util.Date;
 @Entity(tableName = "reward_table")
 public class Reward {
 
-    private Date expirationDate; // created based on date of completion
+    private String name; // set by joining with reward_info_table
+    private String itemName;
+    private String condition;
+    private String instructions;
+    private int numDaysToRedeem;
 
-    @NonNull
+    private Date purchaseDate;
+    private Date expirationDate; // created based on date of purchase
+
+    @PrimaryKey @NonNull
     private String redeemCode;
 
-    @NonNull
-    @PrimaryKey
-    private String companyId;
+    @NonNull private int companyId;
 
-    @NonNull private String itemName;
+    public Reward(@NonNull int companyId, @NonNull String redeemCode, Date purchaseDate) {
 
-
-    public Reward(@NonNull String companyId, @NonNull String redeemCode, @NonNull String itemName) {
-
-        // the number of days the user has to redeem
-        // hard coded now, will come from other table
-        int numDaysToRedeem = 30;
-        Date today = new Date(); // SHOULD BE THE PURCHASE DATE
-        // the last day to redeem reward
-        this.expirationDate = DateUtil.addDays(today, numDaysToRedeem);
-
+        this.purchaseDate = purchaseDate;
         this.redeemCode = redeemCode;
         this.companyId = companyId;
-        this.itemName = itemName;
     }
 
     public Date getExpirationDate() {
@@ -54,20 +48,53 @@ public class Reward {
         this.redeemCode = redeemCode;
     }
 
-    String getCompanyId() {
+    int getCompanyId() {
         return companyId;
     }
-    void setCompanyId(String companyId) {
+    void setCompanyId(int companyId) {
         this.companyId = companyId;
     }
 
-    @NonNull
     public String getItemName() {
         return itemName;
     }
-
-    public void setItemName(@NonNull String itemName) {
+    public void setItemName(String itemName) {
         this.itemName = itemName;
+    }
+
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCondition() {
+        return condition;
+    }
+    public void setCondition(String condition) {
+        this.condition = condition;
+    }
+
+    public String getInstructions() {
+        return instructions;
+    }
+    public void setInstructions(String instructions) {
+        this.instructions = instructions;
+    }
+
+    public int getNumDaysToRedeem() {
+        return numDaysToRedeem;
+    }
+    public void setNumDaysToRedeem(int numDaysToRedeem) {
+        this.numDaysToRedeem = numDaysToRedeem;
+    }
+
+    public Date getPurchaseDate() {
+        return purchaseDate;
+    }
+    public void setPurchaseDate(Date purchaseDate) {
+        this.purchaseDate = purchaseDate;
     }
 }
 
